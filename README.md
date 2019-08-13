@@ -51,7 +51,6 @@
    }
   ```
 
-
 ## Explication
   - J'ai d'abord tenter le test technique en GO mais je me suis confronter à un problème en voulant utiliser GORM pour le mapping relationnel, notamment avec ce bout de code : 
     ```
