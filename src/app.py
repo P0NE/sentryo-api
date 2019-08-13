@@ -20,11 +20,4 @@ def create_app(env_name):
 
     app.register_blueprint(people_blueprint, url_prefix='/api/peoples')
 
-    @app.route('/', methods=['GET'])
-    def index():
-        """
-        example endpoint
-        """
-        return 'Congratulations! Your first endpoint is workin'
-
     return app

@@ -2,6 +2,7 @@ from marshmallow import fields, Schema
 import datetime
 from . import db
 from .vehicle import VehicleModel, VehicleSchema
+from .starship import StarshipModel, StarshipSchema
 from sqlalchemy import Column, Integer, ForeignKey
 
 
@@ -24,7 +25,10 @@ class PeopleModel(db.Model):
     homeworld = db.Column(db.String(128))
     created = db.Column(db.String(128))
     edited = db.Column(db.String(128))
-    vehicles = db.relationship('VehicleModel', secondary='people_vehicles')
+    vehicles = db.relationship(
+        'VehicleModel', secondary='people_vehicles')
+    starships = db.relationship(
+        'StarshipModel', secondary='people_starships')
 
     # class constructor
     def __init__(self, data):
@@ -65,6 +69,10 @@ class PeopleModel(db.Model):
     def get_one_people(id):
         return PeopleModel.query.get(id)
 
+    @staticmethod
+    def get_people_by_name(name):
+        return PeopleModel.query.filter_by(name=name).first()
+
     def __repr(self):
         return '<id {}>'.format(self.id)
 
@@ -84,12 +92,19 @@ class PeopleSchema(Schema):
     birth_year = fields.Str(required=True)
     gender = fields.Str(required=True)
     homeworld = fields.Str(required=True)
-    created = fields.Str(required=True)
-    edited = fields.Str(required=True)
+    created = fields.DateTime(dump_only=True)
+    edited = fields.DateTime(dump_only=True)
     vehicles = fields.Nested(VehicleSchema, many=True)
+    starships = fields.Nested(StarshipSchema, many=True)
 
 
 class PeopleVehiclesLink(db.Model):
     __tablename__ = 'people_vehicles'
     people = Column(Integer, ForeignKey('people.id'), primary_key=True)
     vehicles = Column(Integer, ForeignKey('vehicles.id'), primary_key=True)
+
+
+class PeopleStarshipsLink(db.Model):
+    __tablename__ = 'people_starships'
+    people = Column(Integer, ForeignKey('people.id'), primary_key=True)
+    starships = Column(Integer, ForeignKey('starships.id'), primary_key=True)
