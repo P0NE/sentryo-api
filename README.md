@@ -34,7 +34,7 @@
   ```
   http://127.0.0.1:5000/api/peoples/<id int>
   ```
-  - Create un people:
+  - Create un people: POST
   ```
   http://127.0.0.1:5000/api/peoples/
 
@@ -49,7 +49,7 @@
     "mass": "unknown",
     "skin_color": "fair"
    }
-    ```
+  ```
 
 
 ## Explication
