@@ -25,13 +25,11 @@
   - Update un people : PATCH
   ```
   http://127.0.0.1:5000/api/peoples/<id int>
-  ```
-    Body : 
-    ```
+
     {
         "name": "Michel"
     }
-   ```
+
   - Delete un people : DELETE
   ```
   http://127.0.0.1:5000/api/peoples/<id int>
@@ -39,8 +37,7 @@
   - Create un people:
   ```
   http://127.0.0.1:5000/api/peoples/
-  ```
-   Body : ```
+
     {
 	"name": "mm",
 	"birth_year": "64BBY",
