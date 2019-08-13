@@ -12,6 +12,48 @@
       ```
   - Démarrer l'app avec `python run.py`
 
+## Utilisation
+  - Pour tester les APIs, on peut utiliser `POSTMAN`
+  - Récupérer tout les peoples : GET
+  ```
+  http://127.0.0.1:5000/api/peoples/
+  ```
+  - Récupérer un people : GET
+  ```
+  http://127.0.0.1:5000/api/peoples/<id int>
+  ```
+  - Update un people : PATCH
+  ```
+  http://127.0.0.1:5000/api/peoples/<id int>
+  ```
+    Body : ```
+    {
+        "name": "Michel"
+    }
+    ```
+- Delete un people : DELETE
+  ```
+  http://127.0.0.1:5000/api/peoples/<id int>
+  ```
+  - Create un people:
+  ```
+  http://127.0.0.1:5000/api/peoples/
+  ```
+   Body : ```
+    {
+	"name": "mm",
+	"birth_year": "64BBY",
+    "eye_color": "blue",
+    "gender": "male",
+    "hair_color": "auburn, grey",
+    "height": "180",
+    "homeworld": "21",
+    "mass": "unknown",
+    "skin_color": "fair"
+   }
+    ```
+
+
 ## Explication
   - J'ai d'abord tenter le test technique en GO mais je me suis confronter à un problème en voulant utiliser GORM pour le mapping relationnel, notamment avec ce bout de code : 
     ```
